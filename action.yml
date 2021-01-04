@@ -1,0 +1,16 @@
+# action.yml
+name: 'pytorch-docker-action'
+description: 'Provides Pytorch docker to execute shell script for general testing'
+inputs:
+  file-to-run:  # id of input
+    description: 'Action file to run as test'
+    required: true
+    default: 'run_me.sh'
+outputs:
+  file_run_status: # id of output
+    description: 'The results of the file we ran'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.file-to-run }}
